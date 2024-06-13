@@ -61,7 +61,7 @@ const Menu: React.FC<SettingsProps> = ({
 	return (
 		<div>
 			<label>
-				Resolution:
+				Digital Resolution:
 				<input
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
 					type="number"
@@ -70,7 +70,7 @@ const Menu: React.FC<SettingsProps> = ({
 				/>
 			</label>
 			<label>
-				Max Iterations:
+				Mathamatical Resolution:
 				<input
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
 					type="number"
