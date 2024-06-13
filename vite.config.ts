@@ -5,7 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
 	plugins: [
 		remix({
-			buildDirectory: '../../dist/ui'
+			buildDirectory: 'build'
 		}),
 		tsconfigPaths()
 	]
