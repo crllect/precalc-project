@@ -34,29 +34,24 @@ const drawMandelbrot = (
 	}
 };
 
-const Frame: React.FC = () => {
+interface FrameProps {
+	resolution: number;
+	maxIter: number;
+	zoom: number;
+}
+
+const Frame: React.FC<FrameProps> = ({ resolution, maxIter, zoom }) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	useEffect(() => {
 		const canvas = canvasRef.current;
-
 		if (canvas && canvas.parentElement) {
 			const context = canvas.getContext('2d');
 			if (context) {
-				const resolution = 1;
-				const maxIter = 100;
-				const inputedZoom = 1;
-				const parentElement = canvas.parentElement;
-				const zoom =
-					Math.min(
-						parentElement.clientWidth,
-						parentElement.clientHeight
-					) /
-					(2 / inputedZoom);
 				drawMandelbrot(context, resolution, maxIter, zoom);
 			}
 		}
-	}, []);
+	}, [resolution, maxIter, zoom]); // Re-render when these props change
 
 	return (
 		<canvas

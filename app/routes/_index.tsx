@@ -1,6 +1,6 @@
 import type { MetaFunction } from '@remix-run/node';
+import FrameContainer from '../components/frameContainer';
 import Back from '../components/back';
-import Frame from '../components/frame';
 
 export const meta: MetaFunction = () => {
 	return [
@@ -15,7 +15,9 @@ export const meta: MetaFunction = () => {
 export default function Index() {
 	return (
 		<main className="h-screen overflow-hidden">
-			<Frame />
+			<FrameContainer />
+
+			<Back />
 		</main>
 	);
 }
