@@ -44,12 +44,21 @@ const drawMandelbrot = (
 
 interface FrameProps {
 	resolution: number;
+	canvasSize: number;
 	maxIter: number;
 	zoom: number;
 	shift: CameraShift;
+	showCrosshair: boolean;
 }
 
-const Frame: React.FC<FrameProps> = ({ resolution, maxIter, zoom, shift }) => {
+const Frame: React.FC<FrameProps> = ({
+	resolution,
+	canvasSize,
+	maxIter,
+	zoom,
+	shift,
+	showCrosshair
+}) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	useEffect(() => {
@@ -60,14 +69,50 @@ const Frame: React.FC<FrameProps> = ({ resolution, maxIter, zoom, shift }) => {
 				drawMandelbrot(context, resolution, maxIter, zoom * 100, shift);
 			}
 		}
-	}, [resolution, maxIter, zoom, shift.x, shift.y, shift]);
+	}, [
+		resolution,
+		canvasSize,
+		maxIter,
+		zoom,
+		shift.x,
+		shift.y,
+		shift,
+		showCrosshair
+	]);
 
 	return (
-		<canvas
-			className="fractalCanvas"
-			ref={canvasRef}
-			width="1600" // TODO: make it so that these are props, and can be changed by menu. There will be 2 new props, canvasWidth and canvasHeight, that will be passed to the canvas element. In menu, the use can change the resolution, which will change the canvasWidth and canvasHeight. The canvas will be redrawn with the new resolution. By default it will be 2000. Even though the canvas will change, the css will keep it the same size. Ill put this in "advanced" or something, cus changing "resolution" in menu will have the same effect to the end user.
-			height="1600"></canvas>
+		<div className='fractalCanvasContainer'>
+			<canvas
+				className="fractalCanvas"
+				ref={canvasRef}
+				width={canvasSize}
+				height={canvasSize}></canvas>
+			{showCrosshair && (
+				<svg
+					className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+					style={{ zIndex: 10 }}
+					width="20"
+					height="20"
+					viewBox="0 0 20 20">
+					<line
+						x1="10"
+						y1="0"
+						x2="10"
+						y2="20"
+						stroke="white"
+						strokeWidth="2"
+					/>
+					<line
+						x1="0"
+						y1="10"
+						x2="20"
+						y2="10"
+						stroke="white"
+						strokeWidth="2"
+					/>
+				</svg>
+			)}
+		</div>
 	);
 };
 
