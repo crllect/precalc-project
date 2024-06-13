@@ -21,7 +21,7 @@ const drawMandelbrot = (
 			let zy = 0;
 
 			const cx = (x - width / 2 + shift.x * zoom * 0.1) / zoom - 0.5;
-			const cy = (y - height / 2 + shift.y * zoom * 0.1) / zoom;
+			const cy = (y - height / 2 + shift.y * zoom * -0.1) / zoom;
 
 			let iter = maxIter;
 

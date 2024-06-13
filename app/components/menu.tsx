@@ -63,6 +63,7 @@ const Menu: React.FC<SettingsProps> = ({
 			<label>
 				Digital Resolution:
 				<input
+				step="0.1"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
 					type="number"
 					value={tempResolution}
@@ -72,6 +73,7 @@ const Menu: React.FC<SettingsProps> = ({
 			<label>
 				Computational Resolution:
 				<input
+				step="1"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
 					type="number"
 					value={tempMaxIter}
@@ -81,9 +83,10 @@ const Menu: React.FC<SettingsProps> = ({
 			<label>
 				Zoom:
 				<input
+				step="10"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
 					type="number"
-					step="0.1"
+					
 					value={tempZoom}
 					onChange={handleZoomChange}
 				/>
@@ -91,6 +94,7 @@ const Menu: React.FC<SettingsProps> = ({
 			<label>
 				Shift X:
 				<input
+				step="0.01"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
 					type="number"
 					value={tempShiftX}
@@ -100,6 +104,7 @@ const Menu: React.FC<SettingsProps> = ({
 			<label>
 				Shift Y:
 				<input
+				step="0.01"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
 					type="number"
 					value={tempShiftY}
