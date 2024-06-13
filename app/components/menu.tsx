@@ -1,24 +1,36 @@
 import React, { useState } from 'react';
 
+interface CameraShift {
+	x: number;
+	y: number;
+}
+
 interface SettingsProps {
 	resolution: number;
 	maxIter: number;
 	zoom: number;
-	updateSettings: (resolution: number, maxIter: number, zoom: number) => void;
+	shift: CameraShift;
+	updateSettings: (
+		resolution: number,
+		maxIter: number,
+		zoom: number,
+		shift: CameraShift
+	) => void;
 }
 
 const Menu: React.FC<SettingsProps> = ({
 	resolution,
 	maxIter,
 	zoom,
+	shift,
 	updateSettings
 }) => {
-	// Local state to hold temporary values before submission
 	const [tempResolution, setTempResolution] = useState(resolution);
 	const [tempMaxIter, setTempMaxIter] = useState(maxIter);
 	const [tempZoom, setTempZoom] = useState(zoom);
+	const [tempShiftX, setTempShiftX] = useState(shift.x);
+	const [tempShiftY, setTempShiftY] = useState(shift.y);
 
-	// Handlers to update local state
 	const handleResolutionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setTempResolution(parseInt(e.target.value));
 	};
@@ -31,9 +43,19 @@ const Menu: React.FC<SettingsProps> = ({
 		setTempZoom(parseFloat(e.target.value));
 	};
 
-	// Submit handler to update the parent component's state
+	const handleShiftXChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setTempShiftX(parseFloat(e.target.value));
+	};
+
+	const handleShiftYChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setTempShiftY(parseFloat(e.target.value));
+	};
+
 	const handleSubmit = () => {
-		updateSettings(tempResolution, tempMaxIter, tempZoom);
+		updateSettings(tempResolution, tempMaxIter, tempZoom, {
+			x: tempShiftX,
+			y: tempShiftY
+		});
 	};
 
 	return (
@@ -64,6 +86,24 @@ const Menu: React.FC<SettingsProps> = ({
 					step="0.1"
 					value={tempZoom}
 					onChange={handleZoomChange}
+				/>
+			</label>
+			<label>
+				Shift X:
+				<input
+					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
+					type="number"
+					value={tempShiftX}
+					onChange={handleShiftXChange}
+				/>
+			</label>
+			<label>
+				Shift Y:
+				<input
+					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
+					type="number"
+					value={tempShiftY}
+					onChange={handleShiftYChange}
 				/>
 			</label>
 			<button onClick={handleSubmit}>Submit</button>
