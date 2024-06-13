@@ -70,7 +70,7 @@ const Menu: React.FC<SettingsProps> = ({
 				/>
 			</label>
 			<label>
-				Mathamatical Resolution:
+				Computational Resolution:
 				<input
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
 					type="number"
