@@ -4,10 +4,10 @@ import Back from '../components/back';
 
 export const meta: MetaFunction = () => {
 	return [
-		{ title: 'Fractal Generator' },
+		{ title: 'Mandlebrot Set Viewer' },
 		{
 			name: 'description',
-			content: 'Something about ai, idk'
+			content: 'Best mandlebrot view fr'
 		}
 	];
 };
