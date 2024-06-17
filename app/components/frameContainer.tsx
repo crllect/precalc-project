@@ -11,8 +11,8 @@ const FrameContainer: React.FC = () => {
 	const [settings, setSettings] = useState({
 		resolution: 1,
 		canvasSize: 1600,
-		maxIter: 100,
-		zoom: 5,
+		maxIter: 50,
+		zoom: 3,
 		shift: { x: 0, y: 0 }
 	});
 	const [showCrosshair, setShowCrosshair] = useState(false);
@@ -32,14 +32,20 @@ const FrameContainer: React.FC = () => {
 	};
 
 	return (
-		<div className="!z-10 absolute">
-			<Menu
-				{...settings}
-				showCrosshair={showCrosshair}
-				updateSettings={updateSettings}
-				updateCrosshair={updateCrosshair} 
-				/>
-			<Frame {...settings} showCrosshair={showCrosshair} />
+		<div className="!z-10 container">
+			<div className="flex flex-row">
+				<div className="">
+					<Frame {...settings} showCrosshair={showCrosshair} />
+				</div>
+				<div className="menuContainer">
+					<Menu
+						{...settings}
+						showCrosshair={showCrosshair}
+						updateSettings={updateSettings}
+						updateCrosshair={updateCrosshair}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 };

@@ -15,6 +15,13 @@ const drawMandelbrot = (
 	const width = ctx.canvas.width;
 	const height = ctx.canvas.height;
 
+	const getColor = (iter: number, maxIter: number) => {
+		const hue = 360 - 360 * (iter / maxIter) * 0.95;
+		const saturation = 100;
+		const lightness = 50;
+		const alpha = Math.pow(iter / maxIter, 2);
+		return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
+	};
 	for (let x = 0; x < width; x += resolution) {
 		for (let y = 0; y < height; y += resolution) {
 			let zx = 0;
@@ -32,11 +39,7 @@ const drawMandelbrot = (
 				iter--;
 			}
 
-			const color =
-				iter === 0
-					? 'black'
-					: `hsl(${(360 * iter) / maxIter}, 100%, 50%)`;
-			ctx.fillStyle = color;
+			ctx.fillStyle = getColor(maxIter - iter, maxIter);
 			ctx.fillRect(x, y, resolution, resolution);
 		}
 	}
@@ -81,7 +84,7 @@ const Frame: React.FC<FrameProps> = ({
 	]);
 
 	return (
-		<div className='fractalCanvasContainer'>
+		<div className="fractalCanvasContainer">
 			<canvas
 				className="fractalCanvas"
 				ref={canvasRef}

@@ -119,16 +119,19 @@
 	.contrib {
 		@apply border-input ring-offset-background hover:text-accent-foreground focus-visible:ring-ring inline-flex items-center justify-center whitespace-nowrap rounded-md border bg-[color:var(--background-button)] p-4 text-sm font-medium transition-colors duration-300 hover:shadow-[0_0_15px_0px_rgba(30,41,59,0.75)_inset] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
 	}
-	.fractalCanvas {
-		position: absolute !important;
-		top: 50% !important;
-		left: 50% !important;
-		transform: translate(-50%, -50%) !important;
-		height: 80vh; /* I had this as: calc(vh * 0.8), which I meant to be like this: calc(100vh * 0.8). I only after like 2 ours did I realize it was supposed to be 80vh. */
-		width: 80vh;
+	.container {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border-radius: 50px;
 	}
-	.fractalCanvasContainer {
-		transform: translateY(40vh) !important;
+	.fractalCanvas {
+		width: 100%;
+		height: 100%;
+	}
+	.menuContainer {
+		width: 550px;
 	}
 }
 @font-face {

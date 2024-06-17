@@ -54,7 +54,7 @@ app.use(express.static('build/client', { maxAge: '1h' }));
 app.use(morgan('tiny'));
 
 app.get('/service-worker.ts', (req: Request, res: Response) => {
-    res.status(200).send('OK');
+	res.status(200).send('OK');
 });
 
 // handle SSR requests
