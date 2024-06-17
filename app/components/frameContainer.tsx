@@ -11,8 +11,8 @@ const FrameContainer: React.FC = () => {
 	const [settings, setSettings] = useState({
 		resolution: 1,
 		canvasSize: 1600,
-		maxIter: 50,
-		zoom: 3,
+		maxIter: 75,
+		zoom: 5,
 		shift: { x: 0, y: 0 }
 	});
 	const [showCrosshair, setShowCrosshair] = useState(false);

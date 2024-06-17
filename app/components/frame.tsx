@@ -16,11 +16,15 @@ const drawMandelbrot = (
 	const height = ctx.canvas.height;
 
 	const getColor = (iter: number, maxIter: number) => {
-		const hue = 360 - 360 * (iter / maxIter) * 0.95;
-		const saturation = 100;
-		const lightness = 50;
-		const alpha = Math.pow(iter / maxIter, 2);
-		return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
+		if (iter === maxIter) {
+			return 'hsla(0, 0%, 0%, 1)';
+		} else {
+			const hue = (360 * iter) / maxIter;
+			const saturation = 100;
+			const lightness = 50;
+			const alpha = Math.pow(iter / maxIter, 2);
+			return `hsla(${hue}, ${saturation}%, ${lightness}%, ${alpha})`;
+		}
 	};
 	for (let x = 0; x < width; x += resolution) {
 		for (let y = 0; y < height; y += resolution) {
@@ -69,6 +73,8 @@ const Frame: React.FC<FrameProps> = ({
 		if (canvas && canvas.parentElement) {
 			const context = canvas.getContext('2d');
 			if (context) {
+				// Clear the canvas before drawing
+				context.clearRect(0, 0, canvas.width, canvas.height);
 				drawMandelbrot(context, resolution, maxIter, zoom * 100, shift);
 			}
 		}
@@ -92,8 +98,10 @@ const Frame: React.FC<FrameProps> = ({
 				height={canvasSize}></canvas>
 			{showCrosshair && (
 				<svg
-					className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-					style={{ zIndex: 10 }}
+					className="crosshair"
+					style={{
+						zIndex: 10
+					}}
 					width="20"
 					height="20"
 					viewBox="0 0 20 20">
