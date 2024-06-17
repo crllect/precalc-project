@@ -73,7 +73,6 @@ const Frame: React.FC<FrameProps> = ({
 		if (canvas && canvas.parentElement) {
 			const context = canvas.getContext('2d');
 			if (context) {
-				// Clear the canvas before drawing
 				context.clearRect(0, 0, canvas.width, canvas.height);
 				drawMandelbrot(context, resolution, maxIter, zoom * 100, shift);
 			}
@@ -95,7 +94,8 @@ const Frame: React.FC<FrameProps> = ({
 				className="fractalCanvas"
 				ref={canvasRef}
 				width={canvasSize}
-				height={canvasSize}></canvas>
+				height={canvasSize}
+			></canvas>
 			{showCrosshair && (
 				<svg
 					className="crosshair"
@@ -104,7 +104,8 @@ const Frame: React.FC<FrameProps> = ({
 					}}
 					width="20"
 					height="20"
-					viewBox="0 0 20 20">
+					viewBox="0 0 20 20"
+				>
 					<line
 						x1="10"
 						y1="0"

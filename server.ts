@@ -1,12 +1,9 @@
 import { createRequestHandler } from '@remix-run/express';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import { installGlobals } from '@remix-run/node';
 import compression from 'compression';
 import express, { Request, Response } from 'express';
 import morgan from 'morgan';
-import { createServer, IncomingMessage, ServerResponse } from 'http';
-import { Socket } from 'net';
+import { createServer } from 'http';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -21,7 +18,7 @@ const viteDevServer =
 				vite.createServer({
 					server: { middlewareMode: true }
 				})
-			); // port 24678 is the default port for Vite's server cannot use same port as express
+			);
 
 const remixHandler = createRequestHandler({
 	build: viteDevServer
@@ -35,11 +32,9 @@ const remixHandler = createRequestHandler({
 const app = express();
 app.use(compression());
 app.disable('x-powered-by');
-// handle asset requests
 if (viteDevServer) {
 	app.use(viteDevServer.middlewares);
 } else {
-	// Vite fingerprints its assets so we can cache forever.
 	app.use(
 		'/assets',
 		express.static('build/client/assets', {

@@ -37,7 +37,7 @@ const FrameContainer: React.FC = () => {
 				<div className="">
 					<Frame {...settings} showCrosshair={showCrosshair} />
 				</div>
-				<div className="menuContainer">
+				<div className="menuContainer p-10">
 					<Menu
 						{...settings}
 						showCrosshair={showCrosshair}

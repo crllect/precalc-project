@@ -124,19 +124,72 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		border-radius: 50px;
+		border: 10px solid;
+		padding: 1.75rem;
+		font-size: 0.875rem;
+		color: rgba(255, 255, 255, 0.9);
+		transition: all 0.3s;
+		border: var(--border-light);
+		outline: none;
+		border-radius: 3.25vw;
+		background-color: #5454540a;
+		background: rgba(84, 84, 84, 0.2);
+		box-shadow:
+			0 0 25px 5px rgba(30, 41, 59, 1) inset,
+			0px 4px 20px 5px rgba(0, 0, 0, 0.25);
+		backdrop-filter: blur(7.5px);
 	}
 	.fractalCanvas {
 		width: 100%;
 		height: 100%;
+		border: 10px solid;
+		font-size: 0.875rem;
+		color: rgba(255, 255, 255, 0.9);
+		transition: all 0.3s;
+		border: var(--border-light);
+		outline: none;
+		border-radius: 2.25vw !important;
+		box-shadow:
+			-5px 0px 3px 0px rgba(255, 255, 255, 0.25) inset,
+			5px 0px 3px 0px rgba(255, 255, 255, 0.25) inset,
+			0 0 25px 5px rgba(30, 41, 59, 1) inset;
+	}
+	.submitButton {
+		padding: 10px 20px !important;
+		border: 10px solid;
+		font-size: 0.875rem;
+		color: rgba(255, 255, 255, 0.9);
+		transition: all 0.3s !important;
+		border: var(--border-light);
+		outline: none;
+		border-radius: 2.25vw !important;
+		box-shadow:
+			0 0 25px 5px rgba(30, 41, 59, 1) inset,
+			0px 4px 20px 5px rgba(0, 0, 0, 0.25);
+		backdrop-filter: blur(7.5px);
+	}
+	.submitButton:hover {
+		cursor: pointer;
+		padding: 10px 20px !important;
+		border: 10px solid;
+		font-size: 0.875rem;
+		color: rgba(255, 255, 255, 0.9);
+		transition: all 0.3s !important;
+		border: var(--border-light);
+		outline: none;
+		border-radius: 2.25vw !important;
+		box-shadow:
+			-5px 0px 3px 0px rgba(255, 255, 255, 0.25) inset,
+			5px 0px 3px 0px rgba(255, 255, 255, 0.25) inset,
+			0 0 25px 5px rgba(30, 41, 59, 1) inset;
 	}
 	.menuContainer {
-		width: 550px;
+		width: 350px;
 	}
 	.crosshair {
 		position: absolute !important;
 		top: calc(50% - 10px) !important;
-		left: calc(50% - 180px) !important;
+		left: calc(50% - 153px) !important;
 	}
 }
 @font-face {

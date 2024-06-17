@@ -95,6 +95,7 @@ const Menu: React.FC<SettingsProps> = ({
 		<div>
 			<label>
 				Digital Resolution:
+				<br />
 				<input
 					step="0.1"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
@@ -103,8 +104,13 @@ const Menu: React.FC<SettingsProps> = ({
 					onChange={handleResolutionChange}
 				/>
 			</label>
+			<br />
+			<br />
+			<hr />
+			<br />
 			<label>
 				Raw Digital Resolution:
+				<br />
 				<input
 					step="100"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
@@ -113,8 +119,13 @@ const Menu: React.FC<SettingsProps> = ({
 					onChange={handleRawResolutionChange}
 				/>
 			</label>
+			<br />
+			<br />
+			<hr />
+			<br />
 			<label>
 				Computational Resolution:
+				<br />
 				<input
 					step="1"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
@@ -123,8 +134,13 @@ const Menu: React.FC<SettingsProps> = ({
 					onChange={handleMaxIterChange}
 				/>
 			</label>
+			<br />
+			<br />
+			<hr />
+			<br />
 			<label>
 				Zoom:
+				<br />
 				<input
 					step="10"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
@@ -133,8 +149,13 @@ const Menu: React.FC<SettingsProps> = ({
 					onChange={handleZoomChange}
 				/>
 			</label>
+			<br />
+			<br />
+			<hr />
+			<br />
 			<label>
 				Shift X:
+				<br />
 				<input
 					step="0.01"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
@@ -143,8 +164,13 @@ const Menu: React.FC<SettingsProps> = ({
 					onChange={handleShiftXChange}
 				/>
 			</label>
+			<br />
+			<br />
+			<hr />
+			<br />
 			<label>
 				Shift Y:
+				<br />
 				<input
 					step="0.01"
 					className="border-2 border-black rounded-md p-1 m-1 text-black bg-white"
@@ -153,19 +179,26 @@ const Menu: React.FC<SettingsProps> = ({
 					onChange={handleShiftYChange}
 				/>
 			</label>
+			<br />
+			<br />
 			<hr />
-			<button onClick={handleSubmit}>Submit</button>
+			<br />
+			<button className="submitButton" onClick={handleSubmit}>
+				Submit
+			</button>
+			<br />
+			<br />
 			<hr />
+			<br />
 			<label>
-				Show Crosshair:
+				Show Crosshair:&nbsp;&nbsp;
 				<input
 					id="crosshairCheckbox"
 					type="checkbox"
 					checked={showCrosshair}
-					onChange={e => updateCrosshair(e.target.checked)} // Added onChange handler
+					onChange={e => updateCrosshair(e.target.checked)}
 				/>
 			</label>
-			<hr />
 		</div>
 	);
 };
